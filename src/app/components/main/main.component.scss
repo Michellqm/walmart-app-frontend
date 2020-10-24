@@ -158,3 +158,13 @@ pagination-controls {
     font-family: 'bogle-regular', sans-serif;
     font-size: 1.15em;
 }
+
+/* no result  */
+
+.no-results img {
+    max-height: 500px;
+}
+
+.no-results {
+    text-align: center;
+}
