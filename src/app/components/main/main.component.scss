@@ -1,0 +1,160 @@
+/* colors */
+$light-blue: #0879c9;
+$lightest-blue: #258dd9;
+$dark-blue: #003758;
+$price-color: #ce181a;
+$white: #ffffff;
+$accent-green: #a0c307;
+$black: #211915;
+$placeholder: #eae9e9;
+
+.site-header .logo {
+    padding-left: 40px;
+    padding-right: 37px;
+}
+
+.site-header {
+    width: 100%;
+    height: 74px;
+    background-color: $light-blue;
+    display: flex;
+    z-index: 9998;
+    position: relative;
+    padding: 9px 0px;
+}
+
+.site-header .logo img {
+    width: 152px;
+    height: 50px;
+}
+
+/* input search */
+
+.search-box input {
+    font-family: 'bogle-black', sans-serif;
+    width: 100%;
+    height: 43px;
+    border: none;
+    padding-left: 12px;
+}
+
+.search-box input:focus, .search-box input:focus  {
+    border: none;
+}
+
+.search-box {
+    width: 70%;
+    padding-top: 6px;
+}
+
+::-webkit-input-placeholder { 
+    color: $placeholder;
+    text-transform: uppercase;
+  }
+  
+  :-ms-input-placeholder {
+    color:$placeholder;
+    text-transform: uppercase;
+  }
+  
+  ::placeholder {
+    color: $placeholder;
+    text-transform: uppercase;
+  }
+
+/* product box */
+
+.product-box {
+    padding: 0 30px 24px;
+    border: 1px solid #f1f1f1;
+}
+
+.product-image {
+    max-width: 150px;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.product-name {
+    margin-top: 1em;
+    color: #211915;
+    padding: 5px 0px;
+    font-family: 'bogle-black', sans-serif;
+}
+
+.discount {
+    margin-top: 40px;
+    min-height: 51px;
+}
+
+.price {
+    font-family: 'bogle-black', sans-serif;
+    font-size: 2em;
+    padding: 5px 0px;
+    padding-top: 30px;
+    color: $price-color;
+}
+
+.price::before {
+    content: '$';
+}
+
+button.mat-button.mat-primary {
+    width: 100%;
+    background-color: $lightest-blue;
+    border-radius: 3px;
+    color: $white;
+    margin-top: 18px;
+}
+
+button.mat-button.mat-primary:focus {
+    border: none
+}
+
+.discount-flag {
+    margin-top: 46px;
+    font-size: 1.2em;
+    background: $price-color;
+    color: $white;
+    border-radius: 3px;
+    font-family: 'bogle-black', sans-serif;
+    padding: 8px;
+    position: absolute;
+    right: 4%;
+}
+
+.discount-flag::before {
+    position: absolute;
+    content: " ";
+    left: -8px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid $price-color;
+  }
+
+pagination-controls {
+    margin: auto;
+}
+
+/* Brand Section */
+@media (max-width: 576px){
+    .brand-section{
+        display: none;
+    }
+}
+
+.brand-section h4 {
+    text-transform: uppercase;
+    color:$light-blue;
+    font-family: 'bogle-regular', sans-serif;
+    border-bottom: 1px solid $lightest-blue;
+    font-weight: 700;
+}
+
+.brand-section p {
+    padding-left: 20px;
+    font-family: 'bogle-regular', sans-serif;
+    font-size: 1.15em;
+}

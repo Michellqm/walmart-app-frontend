@@ -1,0 +1,46 @@
+<div class="site-header">
+  <div class="logo">
+    <img src="../../../assets/img/lider-logo.svg" alt="Lider Logo">
+  </div>
+  <div class="search-box">
+    <input matInput #searchBar (keyup.enter)="searchItem(searchBar.value)" placeholder="¿Qué producto buscas hoy?" >
+  </div>
+  <div class="right-content">
+    <div class="user-login"></div>
+    <div class="quickcart-new"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5">
+<div class="row">
+  <div class="col-2 brand-section">
+    <h4 *ngIf="productList.length > 0">Brands</h4>
+      <p *ngFor="let brand of brandList">
+        {{brand}} 
+      </p>
+  </div>
+  <div class="col-md-10 col-sm-12">
+    <div class="row p-1">
+      <div class="col-md-3 col-sm-6 col-13 product-box" *ngFor="let product of productList | paginate: { itemsPerPage: 10, currentPage: p }">
+        <div class="discount-flag" *ngIf="discountFlag">
+          50%
+        </div>
+        <div class="product-image" >
+          <img src="https://{{product?.image}}" alt="{{product?.name}}">
+        </div>
+        <div class="product-name">{{product?.brand}} <br> {{product?.description}}</div>
+        <div class="price">{{product?.price}}</div>
+        <div class="discount">
+          <div class="product-name" *ngIf="discountFlag">Normal: {{product?.price *2}} <br> Ahorro: {{product?.price}}</div>
+        </div>
+        <div class="button">
+          <button mat-button color="primary">Agregar</button>
+        </div>
+      </div>
+    </div>
+    <div class="pagination">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+</div>

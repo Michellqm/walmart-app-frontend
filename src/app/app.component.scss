@@ -1,0 +1,31 @@
+$light-blue: #0879c9;
+$dark-blue: #003758;
+$white: #ffffff;
+
+.first-bar {
+    background-color: $dark-blue;
+    height: 31px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.first-bar div {
+    display: inline-block;
+    height: 31px;
+    padding: 8px 15px;
+}
+
+
+.first-bar div a{
+    color: $white;
+    font-size: .8rem;
+    text-decoration: none;
+    font-family: "bogle-black", sans-serif;
+}
+
+.first-bar div:last-child{
+    background-color: #e75204;
+}
+
+
+
