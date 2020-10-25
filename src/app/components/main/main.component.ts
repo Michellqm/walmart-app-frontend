@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { Products } from '../../domain/Products';
 import Swal from 'sweetalert2'
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main',
@@ -14,13 +15,17 @@ export class MainComponent implements OnInit {
   brandList: Array<string> = new Array<string>();
   discountFlag: boolean = false;
   notFoundFlag: boolean = false;
+  loadingFlag: boolean = false;
   constructor(private productsService : ProductsService) { }
 
   ngOnInit() {
   }
 
   searchItem(item:string) {
+    this.productList = new Array<Products>();
+    this.brandList= new Array<string>();
     if(/^\d+$/.test(item)){
+      this.loadingFlag=true;
       this.productsService.getById(item).subscribe(
         rs => {
           if(rs != null){
@@ -29,13 +34,19 @@ export class MainComponent implements OnInit {
             this.notFoundFlag = false;
           }else {
             this.notFoundFlag = true;
+            this.loadingFlag=false;
           }
         },
         err =>{
           Swal.fire('Oops...', 'Something went wrong!', 'error')
+        },
+        () =>{
+          this.loadingFlag=false;
         }
+        
       );
     }else if(item.length > 2) {
+      this.loadingFlag = true;
       this.discountFlag = this.isPalindrome(item);
       this.productsService.getByText(item, String(this.discountFlag)).subscribe(
         rs => {
@@ -49,6 +60,9 @@ export class MainComponent implements OnInit {
         },
         err =>{
           Swal.fire('Oops...', 'Something went wrong!', 'error')
+        },
+        () =>{
+          this.loadingFlag=false;
         }
       );
     }else {
