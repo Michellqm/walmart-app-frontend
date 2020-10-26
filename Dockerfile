@@ -8,11 +8,11 @@ RUN curl -L https://github.com/sass/node-sass/releases/download/v4.13.0/linux-x6
 RUN npm install
 COPY ./ /app/
 RUN npm rebuild node-sass
-RUN npm run build -- --prod --output-path=./dist/walmart/
+RUN npm run build -- --output-path=./dist/walmart/
 
 FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=node /app/dist/walmart/ /usr/share/nginx/html/
-CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/nginx.conf && nginx -g 'daemon off;'
+CMD ["nginx", "-g", "daemon off;"]
